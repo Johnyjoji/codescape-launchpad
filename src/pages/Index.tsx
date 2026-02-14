@@ -3,6 +3,8 @@ import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/ScrollReveal";
 import ClientLogos from "@/components/ClientLogos";
 import heroBg from "@/assets/hero-bg.jpg";
+
+
 import { ArrowRight, Code2, Layers, Zap, Shield, Quote } from "lucide-react";
 
 const stats = [
@@ -26,11 +28,13 @@ const testimonials = [
 ];
 
 const team = [
-  { name: "Alex Mercer", role: "CEO & Founder", initials: "AM" },
-  { name: "Priya Sharma", role: "CTO", initials: "PS" },
-  { name: "David Okonkwo", role: "VP Engineering", initials: "DO" },
-  { name: "Lisa Tanaka", role: "Head of Design", initials: "LT" },
+  { name: "Samuel Saji", role: "Founder", image: "/samuelsaji.jpeg" },
+  { name: "Joel Saji", role: "Frontend Developer", image: "/joel.jpeg" },
+  { name: "Jithin MP", role: "Backend Developer", image: "/jithin.jpeg" },
+  { name: "Eldho G Blayil", role: "Head of Design", image: "/blayil.jpeg" },
 ];
+
+
 
 const Index = () => {
   return (
@@ -202,9 +206,14 @@ const Index = () => {
             {team.map((m, i) => (
               <ScrollReveal key={m.name} delay={i * 80}>
                 <div className="text-center group">
-                  <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-full bg-secondary border border-border flex items-center justify-center mx-auto mb-4 group-hover:border-primary/40 transition-colors">
-                    <span className="text-lg lg:text-xl font-heading font-bold text-muted-foreground">{m.initials}</span>
-                  </div>
+                <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-full overflow-hidden border border-border mx-auto mb-4 group-hover:border-primary/40 transition-colors">
+                <img
+                  src={m.image}
+                  alt={m.name}
+                  className="w-full h-full object-cover"
+                  />
+                </div>
+
                   <p className="font-heading font-semibold text-foreground text-sm">{m.name}</p>
                   <p className="text-xs text-muted-foreground mt-1">{m.role}</p>
                 </div>
