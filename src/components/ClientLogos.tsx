@@ -1,6 +1,6 @@
 const logos = [
-  "NEXTERA", "VAULTIX", "SYNTHWAVE", "ORBITALQ", "DATAPRIME",
-  "CLOUDNINE", "AXIOMLAB", "SPECTRA", "QUANTUMX", "NOVAFLOW",
+  "Hai Foods", "SJA Cochi", "Ana Sarah Cafe", "Orion Academy", "Tbf Podcast",
+  "Tbrew", "Mivida", "Pentagon Technologies", "Unwind Holidays", "Ferrocon",
 ];
 
 const ClientLogos = () => (

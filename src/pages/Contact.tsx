@@ -103,10 +103,10 @@ const Contact = () => {
                     <h3 className="text-sm font-body uppercase tracking-[0.2em] text-primary mb-4">Direct Contact</h3>
                     <div className="space-y-4">
                       <a href="mailto:hello@codescape.dev" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors">
-                        <Mail size={16} /> hello@codescape.dev
+                        <Mail size={16} /> contact@thecodescape.in
                       </a>
                       <a href="tel:+1-555-0123" className="flex items-center gap-3 text-sm text-muted-foreground hover:text-primary transition-colors">
-                        <Phone size={16} /> +1 (555) 012-3456
+                        <Phone size={16} /> +91 8921258262
                       </a>
                       <div className="flex items-start gap-3 text-sm text-muted-foreground">
                         <MapPin size={16} className="shrink-0 mt-0.5" />

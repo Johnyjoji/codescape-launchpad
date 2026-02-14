@@ -40,10 +40,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         }`}
       >
         <nav className="section-padding section-container flex items-center justify-between h-16 lg:h-20">
-          <Link to="/" className="font-heading text-xl lg:text-2xl font-bold text-foreground tracking-wide">
-            CODESCAPE
-          </Link>
-
+          <img src="/logo.png" alt="Codescape Logo" className="h-[250px] w-[250px]" />
           {/* Desktop Nav */}
           <div className="hidden lg:flex items-center gap-8">
             {navLinks.map((link) => (

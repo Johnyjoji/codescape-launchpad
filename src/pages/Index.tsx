@@ -56,8 +56,8 @@ const Index = () => {
               Engineering-First Technology Partner
             </p>
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-heading font-bold text-foreground leading-[1.08] mb-6 animate-fade-up-delay-1">
-              We Build the Technology That{" "}
-              <span className="text-gradient">Moves You Forward</span>
+            Where Creativity Meets {" "}
+              <span className="text-gradient">Technology</span>
             </h1>
             <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-2xl mb-10 animate-fade-up-delay-2">
               CODESCAPE delivers reliable, scalable, and impactful solutions through innovation
