@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/ScrollReveal";
 import ClientLogos from "@/components/ClientLogos";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBg from "@/hero.mp4";
 
 
 import { ArrowRight, Code2, Layers, Zap, Shield, Quote } from "lucide-react";
@@ -42,12 +42,16 @@ const Index = () => {
       {/* Hero */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img
-            src={heroBg}
-            alt=""
-            className="w-full h-full object-cover opacity-40"
-            loading="eager"
-          />
+        <video
+  className="w-full h-full object-cover opacity-40"
+  autoPlay
+  muted
+  loop
+  playsInline
+>
+  <source src="/hero.mp4" type="video/mp4" />
+</video>
+
           <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
         </div>
         <div className="relative z-10 section-padding section-container w-full pt-32 pb-20 lg:pt-40 lg:pb-32">
