@@ -5,7 +5,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { ArrowRight, MapPin, Clock } from "lucide-react";
 
 const values = [
-  { title: "Engineering Rigor", desc: "We write tested, reviewed, documented code. No shortcuts." },
+  { title: "Open Positions", desc: "We write tested, reviewed, documented code. No shortcuts." },
   { title: "Ownership Mentality", desc: "Every engineer owns their work — from architecture to deployment." },
   { title: "Continuous Learning", desc: "$3K annual learning budget, conference attendance, internal tech talks." },
   { title: "Work-Life Balance", desc: "Flexible hours, remote-first, no crunch culture." },
@@ -41,7 +41,7 @@ const Careers = () => {
       <section className="pb-24 lg:pb-32">
         <div className="section-padding section-container">
           <ScrollReveal>
-            <h2 className="text-2xl lg:text-3xl font-heading font-bold text-foreground mb-12">Why CODESCAPE</h2>
+            <h2 className="text-2xl lg:text-3xl font-heading font-bold text-foreground mb-12">Join CODESCAPE</h2>
           </ScrollReveal>
           <div className="grid sm:grid-cols-2 gap-6">
             {values.map((v, i) => (
