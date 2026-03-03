@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -54,6 +55,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                 {link.label}
               </Link>
             ))}
+            <ThemeToggle />
             <Button variant="cta" size="sm" asChild>
               <Link to="/contact">Start a Project</Link>
             </Button>
