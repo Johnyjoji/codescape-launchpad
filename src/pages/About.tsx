@@ -1,15 +1,51 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/ScrollReveal";
+import { Timeline } from "@/components/ui/timeline";
 import founderVideo from "@/assets/founder.mp4";
 import { ArrowRight, Linkedin } from "lucide-react";
 
-const milestones = [
-  { year: "2020", event: "Founded with a vision to deliver impactful digital solutions." },
-  { year: "2022", event: "Delivered key projects and expanded operations." },
-  { year: "2023", event: "Launched Cloud and AI solutions while growing the engineering team." },
-  { year: "2025", event: "Crossed 50+ projects, 40+ engineers" },
-  { year: "2026", event: "Expanded and formed strategic partnerships." },
+const timelineData = [
+  {
+    title: "2020",
+    content: (
+      <p className="text-muted-foreground text-sm md:text-base">
+        Founded with a vision to deliver impactful digital solutions.
+      </p>
+    ),
+  },
+  {
+    title: "2022",
+    content: (
+      <p className="text-muted-foreground text-sm md:text-base">
+        Delivered key projects and expanded operations.
+      </p>
+    ),
+  },
+  {
+    title: "2023",
+    content: (
+      <p className="text-muted-foreground text-sm md:text-base">
+        Launched Cloud and AI solutions while growing the engineering team.
+      </p>
+    ),
+  },
+  {
+    title: "2025",
+    content: (
+      <p className="text-muted-foreground text-sm md:text-base">
+        Crossed 50+ projects, 40+ engineers.
+      </p>
+    ),
+  },
+  {
+    title: "2026",
+    content: (
+      <p className="text-muted-foreground text-sm md:text-base">
+        Expanded and formed strategic partnerships.
+      </p>
+    ),
+  },
 ];
 
 const leaders = [
@@ -102,23 +138,7 @@ const About = () => (
     </section>
 
     {/* Timeline */}
-    <section className="py-24 lg:py-32 bg-section-alt">
-      <div className="section-padding section-container">
-        <ScrollReveal>
-          <h2 className="text-3xl lg:text-4xl font-heading font-bold text-foreground mb-16">Growth milestones</h2>
-        </ScrollReveal>
-        <div className="space-y-0">
-          {milestones.map((m, i) => (
-            <ScrollReveal key={m.year} delay={i * 60}>
-              <div className="flex gap-6 lg:gap-12 py-6 border-b border-border/50">
-                <span className="text-2xl font-heading font-bold text-primary/40 w-16 shrink-0">{m.year}</span>
-                <p className="text-foreground">{m.event}</p>
-              </div>
-            </ScrollReveal>
-          ))}
-        </div>
-      </div>
-    </section>
+    <Timeline data={timelineData} />
 
     {/* Leadership */}
     <section className="py-24 lg:py-32">
