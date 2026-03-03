@@ -1,23 +1,27 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Menu, X, Home, Briefcase, Users, FolderOpen, FileText, UserPlus, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { ExpandableTabs } from "@/components/ui/expandable-tabs";
+import type { TabItem } from "@/components/ui/expandable-tabs";
 
 const navLinks = [
-  { to: "/", label: "Home" },
-  { to: "/services", label: "Services" },
-  { to: "/about", label: "About" },
-  { to: "/case-studies", label: "Projects" },
-  { to: "/blog", label: "Blog" },
-  { to: "/careers", label: "Careers" },
-  { to: "/contact", label: "Contact" },
+  { to: "/", label: "Home", icon: Home },
+  { to: "/services", label: "Services", icon: Briefcase },
+  { to: "/about", label: "About", icon: Users },
+  { to: "/case-studies", label: "Projects", icon: FolderOpen },
+  { type: "separator" as const },
+  { to: "/blog", label: "Blog", icon: FileText },
+  { to: "/careers", label: "Careers", icon: UserPlus },
+  { to: "/contact", label: "Contact", icon: Mail },
 ];
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -30,6 +34,23 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
+  // Build tabs for ExpandableTabs
+  const tabs: TabItem[] = navLinks.map((link) => {
+    if ("type" in link && link.type === "separator") {
+      return { type: "separator" as const };
+    }
+    return { title: link.label!, icon: link.icon! };
+  });
+
+  // Map tab index to route (skipping separators)
+  const handleTabChange = (index: number | null) => {
+    if (index === null) return;
+    const item = navLinks[index];
+    if (item && "to" in item && item.to) {
+      navigate(item.to);
+    }
+  };
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
@@ -41,20 +62,17 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         }`}
       >
         <nav className="section-padding section-container flex items-center justify-between h-16 lg:h-20">
-          <img src="/logo.png" alt="Codescape Logo" className="h-[250px] w-[250px]" />
-          {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                className={`text-sm font-body font-medium transition-colors hover:text-primary ${
-                  location.pathname === link.to ? "text-primary" : "text-muted-foreground"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
+          <Link to="/">
+            <img src="/logo.png" alt="Codescape Logo" className="h-[250px] w-[250px]" />
+          </Link>
+
+          {/* Desktop Nav - Expandable Tabs */}
+          <div className="hidden lg:flex items-center gap-4">
+            <ExpandableTabs
+              tabs={tabs}
+              onChange={handleTabChange}
+              activeColor="text-primary"
+            />
             <ThemeToggle />
             <Button variant="cta" size="sm" asChild>
               <Link to="/contact">Start a Project</Link>
@@ -75,17 +93,19 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         {mobileOpen && (
           <div className="lg:hidden bg-background/95 backdrop-blur-md border-b border-border">
             <div className="section-padding py-6 flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  className={`text-base font-body font-medium py-2 transition-colors ${
-                    location.pathname === link.to ? "text-primary" : "text-muted-foreground"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
+              {navLinks
+                .filter((link) => !("type" in link && link.type === "separator"))
+                .map((link) => (
+                  <Link
+                    key={link.to}
+                    to={link.to!}
+                    className={`text-base font-body font-medium py-2 transition-colors ${
+                      location.pathname === link.to ? "text-primary" : "text-muted-foreground"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                ))}
               <Button variant="cta" className="mt-2 w-full" asChild>
                 <Link to="/contact">Start a Project</Link>
               </Button>
