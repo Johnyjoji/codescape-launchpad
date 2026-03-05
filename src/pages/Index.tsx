@@ -2,10 +2,9 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import ScrollReveal from "@/components/ScrollReveal";
 import ClientLogos from "@/components/ClientLogos";
-import heroBg from "@/hero.mp4";
-
-
-import { ArrowRight, Code2, Layers, Zap, Shield, Quote } from "lucide-react";
+import { ArrowRight, Code2, Layers, Zap, Shield } from "lucide-react";
+import { Testimonials3D } from "@/components/ui/3d-testimonials";
+import { TeamSlider, TeamMember } from "@/components/ui/team-slider";
 
 const stats = [
   { value: "150+", label: "Projects Delivered" },
@@ -21,20 +20,40 @@ const services = [
   { icon: Shield, title: "Product Development", desc: "End-to-end product engineering from ideation through launch and iteration." },
 ];
 
-const testimonials = [
-  { quote: "CODESCAPE transformed our platform architecture. The team's technical depth and discipline is unmatched.", author: "Sarah Chen", role: "CTO, NexTera Systems" },
-  { quote: "They don't just write code — they engineer solutions. Our infrastructure costs dropped 40% after their optimization work.", author: "Marcus Webb", role: "VP Engineering, DataPrime" },
-  { quote: "The most reliable engineering partner we've worked with. They deliver on time, every time.", author: "Elena Vasquez", role: "Product Director, Orbitalq" },
+const teamMembers: TeamMember[] = [
+  {
+    id: 1,
+    name: "Samuel Saji",
+    role: "Founder",
+    bio: "Visionary leader with a passion for building scalable technology solutions that drive business growth.",
+    imageSrc: "/samuelsaji.jpeg",
+    thumbnailSrc: "/samuelsaji.jpeg"
+  },
+  {
+    id: 2,
+    name: "Joel Saji",
+    role: "Frontend Developer",
+    bio: "Dedicated to creating seamless, interactive user experiences with cutting-edge frontend technologies.",
+    imageSrc: "/joel.jpeg",
+    thumbnailSrc: "/joel.jpeg"
+  },
+  {
+    id: 3,
+    name: "Jithin MP",
+    role: "Backend Developer",
+    bio: "Expert in building robust and scalable backend architectures that power high-performance applications.",
+    imageSrc: "/jithin.jpeg",
+    thumbnailSrc: "/jithin.jpeg"
+  },
+  {
+    id: 4,
+    name: "Eldho G Blayil",
+    role: "Head of Design",
+    bio: "Transforming ideas into visually stunning and highly functional designs that resonate with users.",
+    imageSrc: "/blayil.jpeg",
+    thumbnailSrc: "/blayil.jpeg"
+  },
 ];
-
-const team = [
-  { name: "Samuel Saji", role: "Founder", image: "/samuelsaji.jpeg" },
-  { name: "Joel Saji", role: "Frontend Developer", image: "/joel.jpeg" },
-  { name: "Jithin MP", role: "Backend Developer", image: "/jithin.jpeg" },
-  { name: "Eldho G Blayil", role: "Head of Design", image: "/blayil.jpeg" },
-];
-
-
 
 const Index = () => {
   return (
@@ -42,16 +61,15 @@ const Index = () => {
       {/* Hero */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
-        <video
-  className="w-full h-full object-cover opacity-40"
-  autoPlay
-  muted
-  loop
-  playsInline
->
-  <source src="/hero.mp4" type="video/mp4" />
-</video>
-
+          <video
+            className="w-full h-full object-cover opacity-40"
+            autoPlay
+            muted
+            loop
+            playsInline
+          >
+            <source src="/hero.mp4" type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
         </div>
         <div className="relative z-10 section-padding section-container w-full pt-32 pb-20 lg:pt-40 lg:pb-32">
@@ -60,7 +78,7 @@ const Index = () => {
               Engineering-First Technology Partner
             </p>
             <h1 className="text-4xl sm:text-5xl lg:text-7xl font-heading font-bold text-foreground leading-[1.08] mb-6 animate-fade-up-delay-1">
-            Where Creativity Meets {" "}
+              Where Creativity Meets {" "}
               <span className="text-gradient">Technology</span>
             </h1>
             <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-2xl mb-10 animate-fade-up-delay-2">
@@ -175,20 +193,7 @@ const Index = () => {
               What our partners say
             </h2>
           </ScrollReveal>
-          <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map((t, i) => (
-              <ScrollReveal key={i} delay={i * 100}>
-                <div className="border border-border rounded-lg p-8 h-full flex flex-col card-hover">
-                  <Quote className="text-primary/30 mb-4" size={24} />
-                  <p className="text-sm text-foreground leading-relaxed flex-1 mb-6">{t.quote}</p>
-                  <div>
-                    <p className="text-sm font-heading font-semibold text-foreground">{t.author}</p>
-                    <p className="text-xs text-muted-foreground mt-1">{t.role}</p>
-                  </div>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+          <Testimonials3D />
         </div>
       </section>
 
@@ -206,24 +211,9 @@ const Index = () => {
               </Button>
             </div>
           </ScrollReveal>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((m, i) => (
-              <ScrollReveal key={m.name} delay={i * 80}>
-                <div className="text-center group">
-                <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-full overflow-hidden border border-border mx-auto mb-4 group-hover:border-primary/40 transition-colors">
-                <img
-                  src={m.image}
-                  alt={m.name}
-                  className="w-full h-full object-cover"
-                  />
-                </div>
-
-                  <p className="font-heading font-semibold text-foreground text-sm">{m.name}</p>
-                  <p className="text-xs text-muted-foreground mt-1">{m.role}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
+          <ScrollReveal delay={200}>
+            <TeamSlider members={teamMembers} />
+          </ScrollReveal>
         </div>
       </section>
 

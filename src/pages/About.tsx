@@ -4,6 +4,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { Timeline } from "@/components/ui/timeline";
 import founderVideo from "@/assets/founder.mp4";
 import { ArrowRight, Linkedin } from "lucide-react";
+import { VideoPlayer } from "@/components/ui/video-player";
 
 const timelineData = [
   {
@@ -81,58 +82,49 @@ const About = () => (
               <h2 className="text-2xl lg:text-3xl font-heading font-bold text-foreground mb-6">Our Story</h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
-                  CODESCAPE began in 2020, not in a corporate office, but in the mind of a young dreamer. At the time, Samuel was a mechanical engineering student driven by curiosity and a deep fascination with innovation and technology. While many followed conventional paths, he spent countless late nights exploring how ideas could become meaningful digital solutions. 
+                  CODESCAPE began in 2020, not in a corporate office, but in the mind of a young dreamer. At the time, Samuel was a mechanical engineering student driven by curiosity and a deep fascination with innovation and technology. While many followed conventional paths, he spent countless late nights exploring how ideas could become meaningful digital solutions.
                 </p>
                 <p>
-                What began as curiosity soon turned into a clear vision: to build technology that doesn’t just work, but truly makes a difference.With limited resources and unlimited determination, CODESCAPE was born — focused on creating experiences, solving real problems, and empowering businesses through technology.
+                  What began as curiosity soon turned into a clear vision: to build technology that doesn’t just work, but truly makes a difference.With limited resources and unlimited determination, CODESCAPE was born — focused on creating experiences, solving real problems, and empowering businesses through technology.
                 </p>
                 <p>
-                
-                Today, CODESCAPE crafts captivating websites, seamless e-commerce platforms, and cutting-edge application solutions. Every project carries the same spirit that sparked the journey in 2020 — precision, creativity, and an engineering-first mindset. We believe code is only the beginning. By deeply understanding our clients’ goals, we build reliable, scalable, and future-ready solutions. We don’t work for our clients — we work with them as trusted digital partners. At CODESCAPE, your success is not just a goal; it’s our commitment.
+
+                  Today, CODESCAPE crafts captivating websites, seamless e-commerce platforms, and cutting-edge application solutions. Every project carries the same spirit that sparked the journey in 2020 — precision, creativity, and an engineering-first mindset. We believe code is only the beginning. By deeply understanding our clients’ goals, we build reliable, scalable, and future-ready solutions. We don’t work for our clients — we work with them as trusted digital partners. At CODESCAPE, your success is not just a goal; it’s our commitment.
                 </p>
               </div>
             </div>
           </ScrollReveal>
           <ScrollReveal delay={100}>
-  <div className="space-y-8">
+            <div className="space-y-8">
 
-    {/* Mission */}
-    <div className="border border-border rounded-lg p-8">
-      <h3 className="text-sm font-body uppercase tracking-[0.2em] text-primary mb-3">
-        Mission
-      </h3>
-      <p className="text-foreground leading-relaxed">
-        "To deliver value through innovation, technological excellence and quality, ensuring every
-        CODESCAPE solution is reliable, scalable, and impactful."
-      </p>
-    </div>
+              {/* Mission */}
+              <div className="border border-border rounded-lg p-8">
+                <h3 className="text-sm font-body uppercase tracking-[0.2em] text-primary mb-3">
+                  Mission
+                </h3>
+                <p className="text-foreground leading-relaxed">
+                  "To deliver value through innovation, technological excellence and quality, ensuring every
+                  CODESCAPE solution is reliable, scalable, and impactful."
+                </p>
+              </div>
 
-    {/* Vision */}
-    <div className="border border-border rounded-lg p-8">
-      <h3 className="text-sm font-body uppercase tracking-[0.2em] text-primary mb-3">
-        Vision
-      </h3>
-      <p className="text-foreground leading-relaxed">
-        "To be a leading and trusted technology partner, recognized for innovation, quality,
-        and an enduring passion for excellence."
-      </p>
-    </div>
-        {/* Founder Video */}
-        <div className="rounded-xl overflow-hidden border border-border bg-black ">
-        <video
-          src={founderVideo}
-  className="w-full h-full object-cover"
-  poster="/thumbnail.jpg"
-  autoPlay
-  controls
-  loop
-  playsInline
-/>
+              {/* Vision */}
+              <div className="border border-border rounded-lg p-8">
+                <h3 className="text-sm font-body uppercase tracking-[0.2em] text-primary mb-3">
+                  Vision
+                </h3>
+                <p className="text-foreground leading-relaxed">
+                  "To be a leading and trusted technology partner, recognized for innovation, quality,
+                  and an enduring passion for excellence."
+                </p>
+              </div>
+              {/* Founder Video */}
+              <div className="rounded-xl overflow-hidden border border-border bg-black ">
+                <VideoPlayer src={founderVideo} poster="/thumbnail.jpg" autoPlay muted loop />
+              </div>
 
-    </div>
-
-  </div>
-</ScrollReveal>
+            </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

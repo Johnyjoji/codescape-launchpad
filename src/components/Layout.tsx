@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { ExpandableTabs } from "@/components/ui/expandable-tabs";
 import type { TabItem } from "@/components/ui/expandable-tabs";
+import AnoAI from "./ui/animated-shader-background";
 
 const navLinks = [
   { to: "/", label: "Home", icon: Home },
@@ -52,14 +53,14 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col relative">
+      <AnoAI />
       {/* Header */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-background/90 backdrop-blur-md border-b border-border/50"
-            : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
+          ? "bg-background/90 backdrop-blur-md border-b border-border/50"
+          : "bg-transparent"
+          }`}
       >
         <nav className="section-padding section-container flex items-center justify-between h-16 lg:h-20">
           <Link to="/">
@@ -99,9 +100,8 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
                   <Link
                     key={link.to}
                     to={link.to!}
-                    className={`text-base font-body font-medium py-2 transition-colors ${
-                      location.pathname === link.to ? "text-primary" : "text-muted-foreground"
-                    }`}
+                    className={`text-base font-body font-medium py-2 transition-colors ${location.pathname === link.to ? "text-primary" : "text-muted-foreground"
+                      }`}
                   >
                     {link.label}
                   </Link>
