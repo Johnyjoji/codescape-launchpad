@@ -71,7 +71,7 @@ const testimonials = [
 
 function TestimonialCard({ img, name, username, body, country }: (typeof testimonials)[number]) {
     return (
-        <Card className="w-64">
+        <Card className="w-[240px] sm:w-64">
             <CardContent className="p-4">
                 <div className="flex items-center gap-2.5">
                     <Avatar className="size-9">
@@ -93,34 +93,37 @@ function TestimonialCard({ img, name, username, body, country }: (typeof testimo
 
 export function Testimonials3D() {
     return (
-        <div className="relative flex h-[500px] w-full flex-row items-center justify-center overflow-hidden gap-1.5 [perspective:1000px]">
+        <div className="relative flex h-[450px] sm:h-[550px] w-full flex-row items-center justify-center overflow-hidden [perspective:1000px]">
             <div
-                className="flex flex-row items-center gap-4 py-12"
+                className="flex flex-row items-center gap-2 sm:gap-4 py-8 sm:py-12 scale-[0.85] sm:scale-100 transition-transform duration-500"
                 style={{
                     transform:
                         'rotateX(20deg) rotateY(-10deg) rotateZ(5deg)',
                 }}
             >
-                {/* Vertical Marquee (downwards) */}
+                {/* Column 1 - Always visible */}
                 <Marquee vertical pauseOnHover repeat={3} className="[--duration:40s]">
                     {testimonials.map((review) => (
                         <TestimonialCard key={review.username} {...review} />
                     ))}
                 </Marquee>
-                {/* Vertical Marquee (upwards) */}
-                <Marquee vertical pauseOnHover reverse repeat={3} className="[--duration:40s]">
+
+                {/* Column 2 - Visible on small screens and up */}
+                <Marquee vertical pauseOnHover reverse repeat={3} className="hidden sm:flex [--duration:45s]">
                     {testimonials.map((review) => (
                         <TestimonialCard key={review.username + '-1'} {...review} />
                     ))}
                 </Marquee>
-                {/* Vertical Marquee (downwards) */}
-                <Marquee vertical pauseOnHover repeat={3} className="[--duration:40s]">
+
+                {/* Column 3 - Visible on large screens and up */}
+                <Marquee vertical pauseOnHover repeat={3} className="hidden lg:flex [--duration:35s]">
                     {testimonials.map((review) => (
                         <TestimonialCard key={review.username + '-2'} {...review} />
                     ))}
                 </Marquee>
-                {/* Vertical Marquee (upwards) */}
-                <Marquee vertical pauseOnHover reverse repeat={3} className="[--duration:40s]">
+
+                {/* Column 4 - Visible on extra large screens and up */}
+                <Marquee vertical pauseOnHover reverse repeat={3} className="hidden xl:flex [--duration:50s]">
                     {testimonials.map((review) => (
                         <TestimonialCard key={review.username + '-3'} {...review} />
                     ))}
